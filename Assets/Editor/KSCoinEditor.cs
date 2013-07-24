@@ -8,8 +8,9 @@ public sealed class KSCoinEditor : Editor
 	{
 		var coin = target as KSCoin;
 		
-		string fuckingString = EditorGUILayout.TextField("CharacterBuffer", coin._characterBuffer);
-		string fuckingChara  = EditorGUILayout.TextField("CurrentCharactor", coin._currentCharacter);
+		EditorGUILayout.Vector3Field("OriginalPosition", coin._originalPosition);
+		EditorGUILayout.TextField("CharacterBuffer", coin._characterBuffer);
+		EditorGUILayout.TextField("CurrentCharactor", coin._currentCharacter);
 		GUILayout.BeginHorizontal();
 		if ( GUILayout.Button("Clear") )
 		{

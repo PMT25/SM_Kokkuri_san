@@ -3,7 +3,7 @@
 public class KSCoin : MonoBehaviour
 {
 
-	readonly private Vector3 _originalPosition = new Vector3( 0.0f, 0.0f, 0.5f);
+	public Vector3 _originalPosition = new Vector3( 0.0f, 0.0f, 0.0f);
 	public Vector2 _pos;
 	private Vector2 _previousPos;
 	
@@ -25,6 +25,9 @@ public class KSCoin : MonoBehaviour
 	
 	void Start ()
 	{
+		GameObject torii = GameObject.Find("Torii");
+		_originalPosition = torii.transform.position + new Vector3(0.0f, 0.001f, 0.0f);
+		
 		transform.position = _originalPosition;
 		_radius = ((BoxCollider)collider).size.x * transform.localScale.x * 0.5f;
 	}
@@ -79,7 +82,6 @@ public class KSCoin : MonoBehaviour
 	
 	void OnTriggerEnter( Collider other )
 	{
-		Debug.Log("TriggerEnter");
 		if ( other.gameObject.tag == "KSCharacter" )
 		{
 			_currentCharacter = ((KSCharacter)other.gameObject.GetComponent<KSCharacter>()).Character;
